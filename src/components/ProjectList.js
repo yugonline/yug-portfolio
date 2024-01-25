@@ -1,38 +1,50 @@
 // ProjectList.js
-import React from 'react';
-import { Card, CardActionArea, CardContent, CardActions, Typography, Chip, Link } from '@mui/material';
+import React, {useContext} from 'react';
+import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton, Chip } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import Typography from "@mui/material/Typography";
+import ThemeContext from "../ThemeContext";
 
 function ProjectList({ projects }) {
+    const { dark } = useContext(ThemeContext); // Ensure this matches the context state
+
+    const listItemStyle = dark ? {
+        backgroundColor: '#000',
+        color: '#FFF',
+        borderBottom: '1px solid #FFF'
+    } : {
+        backgroundColor: '#FFF',
+        color: '#000',
+        borderBottom: '1px solid #444'
+    };
+
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <List style={{ width: '100%' }}>
             {projects.map((project, index) => (
-                <Card key={index} style={{ maxWidth: 345, margin: '20px' }}>
-                    {/* Wrap CardActionArea in Link for click action */}
-                    <Link href={project.githubLink} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                        <CardActionArea>
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {project.name}
-                                </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
+                <ListItem key={index} style={listItemStyle}>
+                    <ListItemText
+                        primary={project.name}
+                        secondary={(
+                            <>
+                                <Typography component="span" variant="body2" style={{ color: dark ? '#FFF' : '#000' }}>
                                     {project.description}
                                 </Typography>
-                            </CardContent>
-                            <CardActions>
-                                {project.tags.map((tag, tagIndex) => (
-                                    <Chip key={tagIndex} label={tag} variant="outlined" style={{ margin: '2px' }} />
-                                ))}
-                            </CardActions>
-                        </CardActionArea>
-                    </Link>
-                    {/*/!* GitHub Icon to indicate the link's purpose *!/*/}
-                    {/*<Link href={project.githubLink} target="_blank" rel="noopener noreferrer" style={{ position: 'absolute', top: '4px', right: '4px' }}>*/}
-                    {/*    <GitHubIcon color="action" />*/}
-                    {/*</Link>*/}
-                </Card>
+                                <div style={{ marginTop: '10px' }}>
+                                    {project.tags.map((tag, tagIndex) => (
+                                        <Chip key={tagIndex} label={tag} variant="outlined" style={{ marginRight: '5px', marginBottom: '5px', borderColor: dark ? '#FFF' : '#000', color: dark ? '#FFF' : '#000' }} />
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                    />
+                    <ListItemSecondaryAction>
+                        <IconButton edge="end" aria-label="github" href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                            <GitHubIcon style={{ color: dark ? '#FFF' : '#000' }} />
+                        </IconButton>
+                    </ListItemSecondaryAction>
+                </ListItem>
             ))}
-        </div>
+        </List>
     );
 }
 
