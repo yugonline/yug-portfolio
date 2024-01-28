@@ -39,7 +39,7 @@ function Header() {
 
     return (
         <header style={headerStyle}>
-            <h1 style={headerTextStyle}>Welcome To A Dreamer's Project Portfolio (It's hard to complete projects but we try!)</h1>
+            <h1 style={headerTextStyle}>Welcome To A Dreamer's Project Portfolio 🧚</h1>
             {/* Floating Action Button for Dark Mode Toggle */}
             <Fab
                 style={fabStyle}

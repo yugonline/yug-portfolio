@@ -11,11 +11,17 @@ function ProjectList({ projects }) {
     const listItemStyle = dark ? {
         backgroundColor: '#000',
         color: '#FFF',
-        borderBottom: '1px solid #FFF'
+        padding: '10px 9vw', // 20px top and bottom padding, 9vw left and right
+        margin: '10px auto', // 20px margin at the top and bottom, auto centers it horizontally
+        borderBottom: '1px #FFF',
+        boxSizing: 'border-box', // This makes sure the padding is included in the width
     } : {
         backgroundColor: '#FFF',
         color: '#000',
-        borderBottom: '1px solid #444'
+        padding: '10px 9vw', // Consistent padding
+        margin: '10px auto', // Centering margin
+        borderBottom: '1px #444',
+        boxSizing: 'border-box',
     };
 
     return (
@@ -29,19 +35,19 @@ function ProjectList({ projects }) {
                                 <Typography component="span" variant="body2" style={{ color: dark ? '#FFF' : '#000' }}>
                                     {project.description}
                                 </Typography>
+                                <IconButton aria-label="github" href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                                    <GitHubIcon style={{ color: dark ? '#FFF' : '#000' }} />
+                                </IconButton>
                                 <div style={{ marginTop: '10px' }}>
                                     {project.tags.map((tag, tagIndex) => (
                                         <Chip key={tagIndex} label={tag} variant="outlined" style={{ marginRight: '5px', marginBottom: '5px', borderColor: dark ? '#FFF' : '#000', color: dark ? '#FFF' : '#000' }} />
                                     ))}
                                 </div>
+
+
                             </>
                         )}
                     />
-                    <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="github" href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                            <GitHubIcon style={{ color: dark ? '#FFF' : '#000' }} />
-                        </IconButton>
-                    </ListItemSecondaryAction>
                 </ListItem>
             ))}
         </List>
