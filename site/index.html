@@ -196,18 +196,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
     <div class="grid">
       <article class="card">
-        <span class="tag warm">RL · Evaluation</span>
-        <h3>Verifiable-reward environments for agents that move money</h3>
-        <p>Environments where a program, not a judge model, checks the agent's answer. I mapped 54 existing environment ecosystems, 828 tasks from the major gyms and 213 open-source verifiers, and drafted 380 candidate environments in 27 clusters.</p>
-        <p>The first one I'm building is chargeback adjudication against card-network reason codes, drawing on my time running payments infrastructure at PayPal.</p>
-        <div class="meta">Research → first environment in progress</div>
+        <span class="tag warm">RL · Research review</span>
+        <h3>rlvrexamples: an atlas of RLVR environments</h3>
+        <p>A review of reinforcement learning with verifiable rewards (RLVR), where a program checks the model's answer instead of a judge model. It asks two questions: which RLVR environments haven't been built yet, and could any of them become a company?</p>
+        <p>With a team of research agents, I mapped 54 environment ecosystems, 828 named tasks from the major gyms and 213 open-source verifiers, flagging the ones never used as an LLM reward. The result is a catalog of candidate environments. Each entry gives the reward check, difficulty knobs, a novelty rating against the closest prior work, and a startup tier.</p>
+        <p>Two threads stood out: verified finance-ops agents, and India's GST e-invoice → e-way bill → input-tax-credit chain.</p>
+        <div class="meta">Review · catalog + startup analysis</div>
       </article>
 
       <article class="card">
         <span class="tag warm">Agents · Distributed systems</span>
-        <h3>A merge train for parallel coding agents</h3>
-        <p>A runner for many cheap coding agents working in parallel under a planning model, with a ticket board, fenced leases and a merge train. A chaos bench randomly kills workers and the merger mid-flight.</p>
-        <p>The release candidate passed 10 of 10 chaos runs with zero invariant violations across 152 tests, at 1,051–1,878 merges an hour under chaos, versus about 400 for v1.</p>
+        <h3>Fleet: a merge train for parallel coding agents</h3>
+        <p>Fleet runs many cheap coding agents in parallel under a planning model, with a ticket board, fenced leases and a merge train. A chaos bench randomly kills workers and the merger mid-flight to prove nothing gets lost or merged twice.</p>
+        <p>The release candidate passed 10 of 10 chaos runs with zero invariant violations across 152 tests. It sustained 1,051–1,878 merges an hour while being sabotaged, roughly 3–4× my first version (about 400 an hour).</p>
         <div class="meta">Built and tested</div>
       </article>
 
