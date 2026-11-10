@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yug Shende</title>
+<meta name="description" content="Yug Shende, ML and platform engineer in San Francisco. Billion-scale ranking at Meta, LLM systems at Velocity Global, forecasting and ranking at Nordstrom.">
+<meta property="og:title" content="Yug Shende">
+<meta property="og:description" content="ML and platform engineer, San Francisco. Ex-Meta ranking/recsys, PayPal, Nordstrom.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yugshen.de/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23fff'/%3E%3Crect x='8' y='8' width='20' height='20' fill='%23e3260f'/%3E%3Crect x='8' y='34' width='48' height='4' fill='%23111'/%3E%3Crect x='8' y='46' width='32' height='4' fill='%23111'/%3E%3C/svg%3E">
+<script>
+  try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#111111; --mid:#6b6b6b; --hair:#d9d9d9; --red:#e3260f;
+  --sans:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --bg:#0e0e0e; --fg:#f0f0f0; --mid:#9a9a9a; --hair:#2c2c2c; --red:#ff5a3c; color-scheme:dark; } }
+:root[data-theme="dark"]{ --bg:#0e0e0e; --fg:#f0f0f0; --mid:#9a9a9a; --hair:#2c2c2c; --red:#ff5a3c; color-scheme:dark; }
+*{box-sizing:border-box;border-radius:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:20px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 var(--sans);letter-spacing:-.005em}
+a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--red)}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.m{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:0}
+
+/* 12-column grid; the first 3 columns are the margin */
+.g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;max-width:1440px;margin:0 auto;padding:0 16px}
+@media (min-width:900px){.g{column-gap:24px;padding:0 48px}}
+.lab{grid-column:1/-1}
+.body{grid-column:1/-1}
+@media (min-width:900px){.lab{grid-column:1/4}.body{grid-column:4/13}}
+.lab{font:500 13px/1.4 var(--mono);color:var(--mid);padding-top:6px;margin-bottom:18px}
+.lab b{display:block;color:var(--red);font-weight:500}
+
+/* masthead */
+.mast{border-bottom:1px solid var(--fg)}
+.mast .g{align-items:baseline;padding-top:14px;padding-bottom:14px;font:400 13px var(--mono)}
+.mast .who{grid-column:1/7;font-weight:500}
+.mast nav{grid-column:7/13;display:flex;justify-content:flex-end;gap:20px;flex-wrap:wrap}
+.mast nav a{text-decoration:none;color:var(--mid)}
+.mast nav a:hover{color:var(--red)}
+.mast button{font:inherit;background:none;border:0;color:var(--mid);cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:560px){.mast .who{grid-column:1/-1}.mast nav{grid-column:1/-1;justify-content:flex-start;margin-top:6px;gap:16px}.mast nav .o{display:none}}
+
+/* hero */
+.hero{padding:48px 0 0}
+.name{grid-column:1/-1;font:600 clamp(72px,15.5vw,240px)/.82 var(--sans);letter-spacing:-.055em;margin:0 0 44px;margin-left:-.04em}
+.name span{display:block}
+.name span:last-child{padding-left:.9em}
+@media (max-width:600px){.name span:last-child{padding-left:0}}
+.facts{grid-column:1/-1;font:400 13px/1.7 var(--mono);color:var(--mid);margin-bottom:28px}
+@media (min-width:900px){.facts{grid-column:1/4;margin-bottom:0}}
+.facts > span{display:block}
+.facts .now{color:var(--fg)}
+.lede{grid-column:1/-1;font:500 clamp(26px,3vw,42px)/1.12 var(--sans);letter-spacing:-.025em;margin:0 0 22px}
+@media (min-width:900px){.lede{grid-column:4/12}}
+.lede em{font-style:normal;color:var(--red)}
+.intro{grid-column:1/-1;color:var(--mid);max-width:640px;margin:0 0 26px}
+@media (min-width:900px){.intro{grid-column:4/10}}
+.links{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 28px;font:500 15px var(--sans);margin-bottom:64px}
+@media (min-width:900px){.links{grid-column:4/13}}
+.links a{text-decoration:none;border-bottom:1px solid var(--fg);padding-bottom:2px}
+.links a:hover{border-color:var(--red)}
+.links a.p{color:var(--red);border-color:var(--red)}
+
+/* highlights row: numerals on a shared baseline, hairline separated */
+.hl{grid-column:1/-1;display:grid;grid-template-columns:1fr;border-top:1px solid var(--fg)}
+@media (min-width:700px){.hl{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:900px){.hl{grid-column:4/13}}
+.hl a{display:block;text-decoration:none;padding:16px 20px 22px 0;border-bottom:1px solid var(--hair)}
+@media (min-width:700px){.hl a{border-bottom:0;border-right:1px solid var(--hair);padding-left:20px}.hl a:first-child{padding-left:0}.hl a:last-child{border-right:0}}
+.hl .k{font:400 12px var(--mono);color:var(--red)}
+.hl .v{display:block;font:600 clamp(34px,4.2vw,60px)/1 var(--sans);letter-spacing:-.04em;margin:10px 0 10px}
+.hl .d{font-size:14px;color:var(--mid);line-height:1.4}
+.hl a:hover .v{color:var(--red)}
+.hl-lab{display:none}
+@media (min-width:900px){.hl-lab{display:block;grid-column:1/4;border-top:1px solid var(--fg);font:500 13px var(--mono);color:var(--mid);padding-top:16px}}
+
+/* sections */
+section.s{padding:96px 0 0}
+.s h2{font:600 clamp(36px,5vw,72px)/.95 var(--sans);letter-spacing:-.045em;margin:0 0 40px}
+.rows{border-top:1px solid var(--fg)}
+
+/* experience rows */
+.job{display:grid;grid-template-columns:1fr;gap:4px 24px;padding:24px 0 26px;border-bottom:1px solid var(--hair)}
+@media (min-width:900px){.job{grid-template-columns:minmax(0,2fr) minmax(0,5fr) minmax(0,2fr)}}
+.job .when{font:400 13px var(--mono);color:var(--mid);padding-top:4px}
+.job h3{font:600 21px/1.25 var(--sans);letter-spacing:-.02em;margin:0}
+.job .org{color:var(--mid);margin:2px 0 12px}
+.job ul{margin:0;padding-left:0;list-style:none}
+.job li{margin:7px 0;padding-left:18px;position:relative}
+.job li::before{content:"–";position:absolute;left:0;color:var(--mid)}
+.job .num{font:600 clamp(26px,2.6vw,38px)/1 var(--sans);letter-spacing:-.04em;color:var(--red)}
+.job .num small{display:block;font:400 12px/1.4 var(--mono);letter-spacing:0;color:var(--mid);margin-top:6px}
+@media (max-width:899px){.job .num{order:-1;margin-bottom:6px}}
+
+/* projects */
+.pj details{border-bottom:1px solid var(--hair)}
+.pj summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:44px 1fr 24px;gap:4px 20px;padding:22px 0;align-items:baseline}
+.pj summary::-webkit-details-marker{display:none}
+@media (min-width:900px){.pj summary{grid-template-columns:minmax(0,1fr) minmax(0,5fr) minmax(0,3fr) 24px}}
+.pj .no{font:400 13px var(--mono);color:var(--red)}
+.pj .t{font:600 clamp(22px,2.4vw,30px)/1.15 var(--sans);letter-spacing:-.03em}
+.pj .t small{display:block;font:400 16px/1.45 var(--sans);letter-spacing:0;color:var(--mid);margin-top:6px}
+.pj .kpi{font:400 13px/1.6 var(--mono);color:var(--mid);grid-column:2/3}
+@media (min-width:900px){.pj .kpi{grid-column:auto}}
+.pj .kpi b{color:var(--fg);font-weight:500}
+.pj .x{grid-row:1;grid-column:3;font:400 24px/1 var(--mono);color:var(--mid);justify-self:end;transition:transform .2s}
+@media (min-width:900px){.pj .x{grid-column:4}}
+.pj details[open] .x{transform:rotate(45deg);color:var(--red)}
+.pj summary:hover .t{color:var(--red)}
+.pd{display:grid;grid-template-columns:1fr;gap:28px;padding:4px 0 44px}
+@media (min-width:900px){.pd{grid-template-columns:minmax(0,1fr) minmax(0,5fr) minmax(0,3fr);column-gap:20px}.pd>.a{grid-column:2}.pd>.b{grid-column:3/5}}
+.pd p{margin:0 0 14px;max-width:640px}
+.pd ul{margin:0 0 14px;padding-left:0;list-style:none}
+.pd li{margin:7px 0;padding-left:18px;position:relative}
+.pd li::before{content:"–";position:absolute;left:0;color:var(--mid)}
+.note{border-left:2px solid var(--red);padding:2px 0 2px 16px;margin:6px 0 14px}
+.note b{color:var(--red);font-weight:600}
+.figs{margin:0 0 18px;border-top:1px solid var(--fg)}
+.figs div{padding:12px 0;border-bottom:1px solid var(--hair)}
+.figs b{display:block;font:600 28px/1.05 var(--sans);letter-spacing:-.035em}
+.figs span{font-size:13.5px;color:var(--mid)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px;margin:0}
+.kv dt{font:400 12px var(--mono);color:var(--mid);padding-top:2px}
+.kv dd{margin:0}
+.small{font:400 12px var(--mono);color:var(--mid)}
+.viz{margin:18px 0 0}
+.viz .cap{display:flex;justify-content:space-between;font:400 12px var(--mono);color:var(--mid);border-top:1px solid var(--fg);padding-top:8px;margin-bottom:6px}
+.viz .cap button{font:inherit;background:none;border:0;color:var(--fg);text-decoration:underline;cursor:pointer;padding:0}
+.viz svg{display:block;width:100%;height:auto}
+.viz p{font-size:12.5px;color:var(--mid);margin:6px 0 0}
+
+/* open source list */
+.os a{display:grid;grid-template-columns:44px 1fr;gap:2px 20px;padding:18px 0;border-bottom:1px solid var(--hair);text-decoration:none}
+@media (min-width:900px){.os a{grid-template-columns:minmax(0,1fr) minmax(0,3fr) minmax(0,5fr)}}
+.os .n{font:400 13px var(--mono);color:var(--red)}
+.os .nm{font:600 19px var(--sans);letter-spacing:-.02em}
+.os .nm small{display:block;font:400 12px var(--mono);color:var(--mid);letter-spacing:0}
+.os .ds{color:var(--mid);grid-column:2}
+@media (min-width:900px){.os .ds{grid-column:auto}}
+.os a:hover .nm{color:var(--red)}
+
+/* contact */
+.topics{display:grid;grid-template-columns:1fr;border-top:1px solid var(--fg)}
+@media (min-width:900px){.topics{grid-template-columns:repeat(3,1fr);column-gap:24px}}
+.topics div{padding:16px 0 22px;border-bottom:1px solid var(--hair)}
+.topics h3{font:600 19px/1.25 var(--sans);letter-spacing:-.02em;margin:6px 0 6px}
+.topics p{margin:0;color:var(--mid);font-size:15px}
+.mail{display:block;font:600 clamp(34px,6.4vw,104px)/.95 var(--sans);letter-spacing:-.05em;text-decoration:none;margin:64px 0 14px;word-break:break-word}
+.mail:hover{color:var(--red)}
+
+/* skills */
+.sk{display:grid;grid-template-columns:1fr;gap:6px 24px;border-top:1px solid var(--fg)}
+.sk div{display:grid;grid-template-columns:1fr;gap:2px 24px;padding:14px 0;border-bottom:1px solid var(--hair)}
+@media (min-width:900px){.sk div{grid-template-columns:minmax(0,3fr) minmax(0,6fr)}}
+.sk dt{font:400 13px var(--mono);color:var(--mid)}
+.sk dd{margin:0}
+
+footer{margin-top:120px;border-top:1px solid var(--fg)}
+footer .g{padding-top:16px;padding-bottom:40px;font:400 12px var(--mono);color:var(--mid)}
+footer .l{grid-column:1/-1}
+footer .r{grid-column:1/-1}
+@media (min-width:900px){footer .l{grid-column:1/7}footer .r{grid-column:7/13;text-align:right}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="g">
+    <a class="who" href="#top" style="text-decoration:none">Yug Shende — ML &amp; Platform Engineer</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a class="o" href="#open-source">Open source</a>
+      <a href="#contact">Contact</a>
+      <button type="button" id="theme" aria-label="Colour theme">Auto</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="g">
+    <h1 class="name"><span>Yug</span><span>Shende</span></h1>
+
+    <div class="facts">
+      <span>ML &amp; Platform Engineer</span>
+      <span>San Francisco, <span id="clock" class="m">--:--</span> PT</span>
+      <span class="now">Now: AI-governance startup</span>
+      <span>Ex-Meta · PayPal · Nordstrom</span>
+    </div>
+    <!-- Title matches résumé and LinkedIn. If your LinkedIn title changes, update E/01 below. -->
+    <p class="lede">I build ranking and ML systems that run at <em>billion-user scale</em>, and the platforms that keep them reliable.</p>
+    <p class="intro">Platform engineer at an AI-governance startup, building agentic workflows and internal AI infrastructure. Previously People You May Know ranking at Meta, payments infrastructure at PayPal, LLM/RAG at Velocity Global, and five years of forecasting and ranking at Nordstrom.</p>
+    <div class="links">
+      <a class="p" href="mailto:yugpshende@gmail.com">yugpshende@gmail.com</a>
+      <a href="https://www.linkedin.com/in/yugshende">LinkedIn ↗</a>
+      <a href="https://github.com/yugonline">GitHub ↗</a>
+    </div>
+
+    <div class="hl-lab">Highlights</div>
+    <div class="hl" aria-label="Career highlights">
+      <a href="#e02"><span class="k">E/02 · Meta</span><span class="v">200M+</span><span class="d">unwanted recommendations projected removed, People You May Know ranking</span></a>
+      <a href="#e04"><span class="k">E/04 · Velocity Global</span><span class="v">8h → 2h</span><span class="d">research time per query, LLM/RAG assistant across 190+ countries</span></a>
+      <a href="#e05"><span class="k">E/05 · Nordstrom</span><span class="v">$135M</span><span class="d">in gains from a forecasting and ranking system I built from scratch</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="experience">
+  <div class="g">
+    <div class="lab"><b>01</b>Experience</div>
+    <div class="body">
+      <h2>Nine years, greenfield to billions.</h2>
+      <div class="rows">
+        <div class="job" id="e01">
+          <div class="when">2026 – now<br>E/01</div>
+          <div>
+            <h3>Senior Platform Engineer II</h3>
+            <p class="org">AI-governance startup, San Francisco</p>
+            <ul><li>Building AI tooling on the platform team: agentic workflows and internal AI infrastructure used across engineering.</li></ul>
+          </div>
+          <div></div>
+        </div>
+        <div class="job" id="e02">
+          <div class="when">Jan – May 2026<br>E/02</div>
+          <div>
+            <h3>Senior Machine Learning Engineer</h3>
+            <p class="org">Meta, People You May Know ranking</p>
+            <ul>
+              <li>Owned billion-scale multi-task, multi-label deep ranking models in PyTorch for PYMK, optimising for long-term connection value over short-horizon accept rate through continuous online A/B experiments.</li>
+              <li>Designed a subtractive hide-probability penalty in the main ranking objective, with per-cohort calibration. It was projected to remove 200M+ unwanted recommendations at launch, based on under four days of live traffic.</li>
+              <li>Root-caused a cross-surface notification regression to shared candidate sourcing, which changed the team's sourcing strategy.</li>
+              <li>Showed offline that the production model already learns language affinity, which killed a redundant feature before it shipped.</li>
+            </ul>
+          </div>
+          <div class="num">200M+<small>unwanted recs, projected</small></div>
+        </div>
+        <div class="job" id="e03">
+          <div class="when">Jun – Dec 2025<br>E/03</div>
+          <div>
+            <h3>Senior Software Engineer</h3>
+            <p class="org">PayPal, payments infrastructure</p>
+            <ul>
+              <li>Designed the migration of a payments service to AWS EKS, including a zero-downtime cutover plan.</li>
+              <li>Then joined the team running the Braintree payments gateway (Kafka event streaming, $200B+ annual volume) for a couple of months, before transferring to Meta.</li>
+            </ul>
+          </div>
+          <div></div>
+        </div>
+        <div class="job" id="e04">
+          <div class="when">2023 – 2025<br>E/04</div>
+          <div>
+            <h3>Machine Learning Engineer</h3>
+            <p class="org">Velocity Global</p>
+            <ul><li>Took an enterprise LLM/RAG assistant for employment law across 190+ countries from idea to production. It cut research time per query from 8 hours to 2 and reached 89% accuracy through a human-in-the-loop evaluation pipeline.</li></ul>
+          </div>
+          <div class="num">8h → 2h<small>per query, 89% accuracy</small></div>
+        </div>
+        <div class="job" id="e05">
+          <div class="when">2018 – 2023<br>E/05</div>
+          <div>
+            <h3>Senior Software Engineer, ML</h3>
+            <p class="org">Nordstrom</p>
+            <ul><li>Built a production ML forecasting and ranking system from scratch, scoring 50K+ SKUs monthly across 350+ stores and serving 200K+ requests a day at 99.95% uptime for three years. Owned the full lifecycle and led the 19-person cross-functional team behind it: $135M in gains and $50M+ in annual revenue impact.</li></ul>
+          </div>
+          <div class="num">$135M<small>in gains, 350+ stores</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="projects">
+  <div class="g">
+    <div class="lab"><b>02</b>Projects<br>Independent work, 2026. Code in private repos; happy to walk through any of it.</div>
+    <div class="body">
+      <h2>Outside the day job.</h2>
+      <div class="rows pj">
+        <details>
+          <summary>
+            <span class="no">P/01</span>
+            <span class="t">Sparse weather inference<small>Daily rainfall between gauges in India, scored the way crop insurance would use it.</small></span>
+            <span class="kpi"><b>+13.1%</b> and <b>+11.4%</b> vs kriging<br>two locked blind years</span>
+            <span class="x" aria-hidden="true">+</span>
+          </summary>
+          <div class="pd">
+            <div class="a">
+              <p>Crop-insurance payouts in India depend on rainfall at village level, but most villages have no gauge. I estimate daily rainfall where there's no station, and test it the hard way: whole stations held out, 1° spatial-block folds, and a model frozen before two one-shot locked tests.</p>
+              <p>The test bed is the ~3,300 Indian rain gauges in GHCN-Daily that were active from 1955 to 1970. That's dense enough to hide 95% of them and score against the truth. ERA5 is the fair gridded baseline for that era, because gauge-based products ingest the test gauges.</p>
+              <ul>
+                <li>Gauge-only ML (trained on 438k US and Australia examples, India unseen) ties kriging. The missing information isn't in the neighbouring gauges.</li>
+                <li>The gain comes from new information: ERA5 rain and weather fields, lags, patches and terrain priors, with training geometry matched to deployment density. A leak check on the priors passed.</li>
+                <li>Satellite era: on near-real-time IMERG Late, the learned merge beats raw satellite by 1–5%, and 5% of gauges come within ~2% of kriging with every gauge.</li>
+              </ul>
+              <p class="note"><b>Open problem.</b> Every method catches at most about a third of days with 64.5 mm or more of rain, and all of them under-predict those days. Those are the insurance and flood triggers, so the next target is heavy-rain detection at a fixed false-alarm rate.</p>
+            </div>
+            <div class="b">
+              <div class="figs">
+                <div><b>+13.1%</b><span>RMSE gain over kriging at 5% gauge density, locked 1959 test (95% CI 10.8–15.8)</span></div>
+                <div><b>+11.4%</b><span>same frozen model, locked 1967 test (95% CI 9.4–13.3)</span></div>
+                <div><b>1 in 20</b><span>gauges matches kriging that uses every gauge, in both blind years</span></div>
+                <div><b>−20%</b><span>simulated payout error vs the nearest-station rule (grape weather-index insurance, 180 gauges × 16 seasons)</span></div>
+              </div>
+              <dl class="kv">
+                <dt>Model</dt><dd>Gradient boosting on the 8 nearest gauges + ERA5, lags, patches, terrain</dd>
+                <dt>Data</dt><dd>GHCN-Daily, GSOD, ERA5, IMERG Final &amp; Late</dd>
+                <dt>Also tried</dt><dd>Gemma 270M + LoRA and frozen embeddings: failed the pre-registered bar, closed</dd>
+              </dl>
+              <p class="small" style="margin-top:14px">Private repo · write-up due Dec 2026</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="no">P/02</span>
+            <span class="t">Reward Atlas<small>A map of RL environments where a program, not a judge model, grades the answer.</small></span>
+            <span class="kpi"><b>380</b> candidate environments<br><b>178</b> with no prior work found</span>
+            <span class="x" aria-hidden="true">+</span>
+          </summary>
+          <div class="pd">
+            <div class="a">
+              <p>A review of reinforcement learning with verifiable rewards (RLVR). It asks which environments haven't been built yet, and whether any of them could become a company.</p>
+              <p>With a team of research agents, I mapped 54 environment ecosystems, 828 named tasks from the major gyms and 213 open-source verifiers and simulators, flagging the ones never used as an LLM reward. Then adversarial novelty checks went through every candidate.</p>
+              <p>The result is a catalog of 380 environments in 27 clusters, from PVT-robust analog circuit sizing checked by ngspice to formal assertions that must kill injected RTL bugs. Each entry gives the task, the programmatic verifier, difficulty knobs, and the closest prior work.</p>
+            </div>
+            <div class="b">
+              <div class="figs">
+                <div><b>178 · 194 · 8</b><span>new (nothing found) · thin (evals only, no RL env) · twist (new formulation)</span></div>
+                <div><b>54 · 828 · 213</b><span>ecosystems · named tasks · verifiers surveyed</span></div>
+              </div>
+              <p><a href="https://rlvr.yugshen.de">Read the essay and browse the atlas ↗</a></p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="no">P/03</span>
+            <span class="t">Fleet<small>A crash-safe merge train for many coding agents working one repo in parallel.</small></span>
+            <span class="kpi"><b>0</b> invariant violations under chaos<br><b>1,051–1,878</b> merges/hour</span>
+            <span class="x" aria-hidden="true">+</span>
+          </summary>
+          <div class="pd">
+            <div class="a">
+              <p>Fleet coordinates many cheap coding agents under a planner: a SQLite ticket board, leases with fencing tokens so a stalled worker can never land stale work, a merge train that gates batches before they reach main, and a hook that refuses direct writes to main.</p>
+              <p>It replaced an earlier queue that broke its own invariants even on clean runs. A chaos bench proves the replacement: it randomly SIGKILLs workers, agents and the merger, freezes workers past their leases, writes to main behind Fleet's back, and hangs the test gate.</p>
+              <ul>
+                <li>Release gate: 10/10 chaos runs with 0 invariant violations, 0 stalls and 0 abandoned work, then a 33-run overnight soak at 4–16 workers, also clean.</li>
+                <li>Speculative gating stacks the next train on the tip a passing gate just built: 1.78× more merges per hour on a gate-bound bench.</li>
+                <li>64 parallel slots reach 2,294 merges/hour, with the whole fleet in 7 processes and 190 MB.</li>
+              </ul>
+            </div>
+            <div class="b">
+              <div class="figs">
+                <div><b>1,051–1,878/h</b><span>merges under chaos, vs 665–731 for the old queue on clean runs and ~400 under chaos</span></div>
+                <div><b>400+</b><span>tests, plus 40-minute endurance runs (476 tickets, 0 blocked)</span></div>
+              </div>
+              <div class="viz">
+                <div class="cap"><span>workers → merge gate → main</span><button type="button" id="fleet-pause">Pause</button></div>
+                <svg id="fleet" viewBox="0 0 600 150" role="img" aria-label="Four worker lanes merging through a gate into main; a dot lands about every 2.4 seconds."></svg>
+                <p>One dot is one merge, landing at Fleet's measured pace under chaos: about one every 2.4 s.</p>
+              </div>
+              <p class="small" style="margin-top:12px">Python · SQLite · git · benchmarked with stub agents · private repo</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="no">P/04</span>
+            <span class="t">Inference homelab<small>Open models on a dual-GPU home server; DeepSeek-OCR-2 on current vLLM.</small></span>
+            <span class="kpi"><b>vLLM</b> port<br>quantization · throughput</span>
+            <span class="x" aria-hidden="true">+</span>
+          </summary>
+          <div class="pd">
+            <div class="a"><p>I ported <a href="https://github.com/yugonline/DeepSeek-OCR-2">DeepSeek-OCR-2</a> to the current vLLM engine and use a dual-GPU home server to benchmark quantization and throughput for open models.</p></div>
+            <div class="b"><dl class="kv"><dt>Stack</dt><dd>vLLM, PyTorch, CUDA</dd></dl></div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="no">P/05</span>
+            <span class="t">AI radio engine<small>LLM hosts that talk up to the vocal and never over it.</small></span>
+            <span class="kpi">LLM · TTS · vocal separation<br><b>in progress</b></span>
+            <span class="x" aria-hidden="true">+</span>
+          </summary>
+          <div class="pd">
+            <div class="a"><p>An LLM writes host talk breaks from live news, local TTS speaks them, and vocal separation finds where each song's vocals start and end. The engine owns the timing arithmetic, so the host finishes exactly as the singer comes in.</p><p class="small">In progress · not yet public</p></div>
+            <div class="b">
+              <div class="viz">
+                <div class="cap"><span>talk-up timing</span><span>illustration</span></div>
+                <svg id="wave" viewBox="0 0 600 110" role="img" aria-label="A song waveform with the vocal entry marked; the host talk bar ends just before it."></svg>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="open-source">
+  <div class="g">
+    <div class="lab"><b>03</b>Open source<br>I also practise competitive programming every day.</div>
+    <div class="body">
+      <h2>Read it, run it.</h2>
+      <div class="rows os">
+        <a href="https://github.com/yugonline/context-bridge"><span class="n">O/01</span><span class="nm">context-bridge ↗<small>TypeScript · MCP</small></span><span class="ds">An MCP server that records why AI-generated code was written (decisions, constraints, rejected alternatives) and links it to commits.</span></a>
+        <a href="https://github.com/yugonline/cliNotes"><span class="n">O/02</span><span class="nm">cliNotes ↗<small>Rust</small></span><span class="ds">A CLI for dev logs, learning notes and snippets, with an AI journal. Presented at a Rust meetup.</span></a>
+        <a href="https://github.com/yugonline/DeepSeek-OCR-2"><span class="n">O/03</span><span class="nm">DeepSeek-OCR-2 fork ↗<small>Python · vLLM</small></span><span class="ds">Port to the current vLLM engine, used in my homelab benchmarks.</span></a>
+        <a href="https://github.com/yugonline/KeywordExtractor"><span class="n">O/04</span><span class="nm">KeywordExtractor ↗<small>Python</small></span><span class="ds">A paper reimplementation combining graph and text embeddings. My Kaggle Mentorship Program submission.</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="contact">
+  <div class="g">
+    <div class="lab"><b>04</b>Contact</div>
+    <div class="body">
+      <h2>Let's work on something.</h2>
+      <div class="topics">
+        <div><span class="small">C/01</span><h3>Ranking &amp; recommendation</h3><p>Multi-objective ranking, negative-feedback signals and cross-surface effects, wherever billion-scale production experience helps.</p></div>
+        <div><span class="small">C/02</span><h3>Agents &amp; evaluation</h3><p>Verifiable RL environments, agent evals, and infrastructure for running many agents reliably.</p></div>
+        <div><span class="small">C/03</span><h3>Rainfall &amp; climate risk</h3><p>Precipitation estimation, gauge–satellite merging, extreme-rain verification, and weather-index insurance, especially in India.</p></div>
+      </div>
+      <a class="mail" href="mailto:yugpshende@gmail.com">yugpshende@gmail.com</a>
+      <p class="small">Send a link to what you're working on. I usually reply within a few days.</p>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="background">
+  <div class="g">
+    <div class="lab"><b>05</b>Skills &amp; education</div>
+    <div class="body">
+      <dl class="sk">
+        <div><dt>Ranking &amp; recommendation</dt><dd>MTML deep ranking, multi-objective optimisation, candidate sourcing, A/B testing</dd></div>
+        <div><dt>ML, LLMs &amp; agents</dt><dd>PyTorch, TensorFlow, LLM/RAG, agentic workflows, vLLM, evaluation, geostatistics</dd></div>
+        <div><dt>Systems</dt><dd>Python, C++, Rust, Java, SQL, Kafka, Spark, Airflow, Kubernetes, AWS</dd></div>
+        <div><dt>Education</dt><dd>MS Computer Science, George Washington University, 2018<br>BS Computer Science, NMIMS University, Mumbai, 2016</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="g">
+    <span class="l">© 2026 Yug Shende · San Francisco, Seattle, Washington DC, Mumbai</span>
+    <span class="r" id="perf">Hand-written HTML, no framework</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement, NS = 'http://www.w3.org/2000/svg';
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var btn = document.getElementById('theme'), order = ['auto','light','dark'], cur = root.getAttribute('data-theme') || 'auto';
+  function lab(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
+  btn.textContent = lab(cur);
+  btn.addEventListener('click', function(){
+    cur = order[(order.indexOf(cur) + 1) % 3];
+    if (cur === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', cur);
+    btn.textContent = lab(cur);
+    try { if (cur === 'auto') localStorage.removeItem('theme'); else localStorage.setItem('theme', cur); } catch (e) {}
+  });
+
+  var clock = document.getElementById('clock');
+  function tick(){ try { clock.textContent = new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',hour:'numeric',minute:'2-digit'}).format(new Date()); } catch (e) {} }
+  tick(); setInterval(tick, 30000);
+
+  function txt(p, x, y, s, o){ var t = document.createElementNS(NS, 'text'); t.setAttribute('x', x); t.setAttribute('y', y); t.setAttribute('font-size', '10'); t.setAttribute('font-family', 'IBM Plex Mono, monospace'); t.style.fill = 'var(--fg)'; if (o && o.a) t.setAttribute('text-anchor', o.a); if (o && o.dim) t.setAttribute('fill-opacity', '.6'); t.textContent = s; p.appendChild(t); }
+
+  var fleet = document.getElementById('fleet');
+  if (fleet){
+    var lanes = [22, 52, 82, 112], mainY = 128, gateX = 380, period = 9.6;
+    lanes.forEach(function(y, i){
+      var d = 'M0,' + y + ' L150,' + y + ' C260,' + y + ' 280,' + mainY + ' ' + gateX + ',' + mainY + ' L600,' + mainY;
+      var p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); p.setAttribute('fill', 'none'); p.style.stroke = 'var(--fg)'; p.setAttribute('stroke-opacity', '.25'); p.setAttribute('stroke-width', '1');
+      fleet.appendChild(p); txt(fleet, 0, y - 6, 'worker ' + (i + 1), {dim: true});
+      for (var k = 0; k < 2; k++){
+        var c = document.createElementNS(NS, 'rect'); c.setAttribute('width', '8'); c.setAttribute('height', '8'); c.setAttribute('x', '-4'); c.setAttribute('y', '-4'); c.style.fill = 'var(--red)';
+        var am = document.createElementNS(NS, 'animateMotion'); am.setAttribute('dur', (period * 2) + 's'); am.setAttribute('repeatCount', 'indefinite'); am.setAttribute('begin', (-(i * period / 4) - k * period) + 's'); am.setAttribute('path', d);
+        c.appendChild(am); fleet.appendChild(c);
+      }
+    });
+    var g = document.createElementNS(NS, 'line'); g.setAttribute('x1', gateX); g.setAttribute('x2', gateX); g.setAttribute('y1', mainY - 12); g.setAttribute('y2', mainY + 12); g.style.stroke = 'var(--fg)'; g.setAttribute('stroke-width', '2'); fleet.appendChild(g);
+    txt(fleet, gateX, mainY - 18, 'merge gate', {a: 'middle', dim: true}); txt(fleet, 600, mainY - 10, 'main', {a: 'end'});
+    var pb = document.getElementById('fleet-pause'), paused = false;
+    function setP(p){ paused = p; if (fleet.pauseAnimations){ if (p) fleet.pauseAnimations(); else fleet.unpauseAnimations(); } pb.textContent = p ? 'Play' : 'Pause'; }
+    pb.addEventListener('click', function(){ setP(!paused); });
+    if (reduce) setTimeout(function(){ setP(true); }, 50);
+  }
+
+  var wave = document.getElementById('wave');
+  if (wave){
+    var s = 42; function rnd(){ s = (s * 16807) % 2147483647; return s / 2147483647; }
+    var bars = 120, bw = 600 / bars, onset = 70, mid = 46;
+    for (var b = 0; b < bars; b++){
+      var v = b >= onset, env = v ? 0.55 + 0.4 * Math.abs(Math.sin(b * 0.33)) : 0.18 + 0.14 * Math.abs(Math.sin(b * 0.9)), h = Math.max(2, env * (0.6 + 0.4 * rnd()) * 40);
+      var r = document.createElementNS(NS, 'rect'); r.setAttribute('x', (b * bw + 1).toFixed(1)); r.setAttribute('y', (mid - h).toFixed(1)); r.setAttribute('width', (bw - 2).toFixed(1)); r.setAttribute('height', (h * 2).toFixed(1));
+      r.style.fill = v ? 'var(--fg)' : 'var(--mid)'; r.setAttribute('fill-opacity', v ? '.9' : '.5'); wave.appendChild(r);
+    }
+    var ox = onset * bw;
+    var ln = document.createElementNS(NS, 'line'); ln.setAttribute('x1', ox); ln.setAttribute('x2', ox); ln.setAttribute('y1', 0); ln.setAttribute('y2', 104); ln.style.stroke = 'var(--red)'; ln.setAttribute('stroke-width', '2'); wave.appendChild(ln);
+    var tb = document.createElementNS(NS, 'rect'); tb.setAttribute('x', 30); tb.setAttribute('y', 97); tb.setAttribute('width', ox - 36); tb.setAttribute('height', 6); tb.style.fill = 'var(--red)'; wave.appendChild(tb);
+    txt(wave, ox + 6, 10, 'vocal in'); txt(wave, 32, 92, 'host talk');
+  }
+
+  var perf = document.getElementById('perf'), lcp = 0;
+  try { new PerformanceObserver(function(l){ var e = l.getEntries(); if (e.length) lcp = e[e.length - 1].startTime; }).observe({type: 'largest-contentful-paint', buffered: true}); } catch (e) {}
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      try {
+        var total = 0, nav = performance.getEntriesByType('navigation')[0];
+        if (nav) total += nav.transferSize || 0;
+        performance.getEntriesByType('resource').forEach(function(r){ total += r.transferSize || 0; });
+        var parts = ['Hand-written HTML, no framework'];
+        if (total > 0) parts.push(Math.round(total / 1024) + ' KB');
+        if (lcp > 0) parts.push('LCP ' + Math.round(lcp) + ' ms');
+        perf.textContent = parts.join(' · ');
+      } catch (e) {}
+    }, 1200);
+  });
+})();
+</script>
+</body>
+</html>
