@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yug Shende</title>
+<meta name="description" content="Yug Shende — ML and platform engineer in San Francisco. Billion-scale ranking at Meta; now working on rainfall estimation between gauges in India, verifiable RL environments, and agent infrastructure.">
+<meta property="og:title" content="Yug Shende">
+<meta property="og:description" content="ML and platform engineer, San Francisco. Ex-Meta ranking/recsys. Working on rainfall between gauges in India, RL environments, and agent infrastructure.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yugshen.de/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5c63'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='32' text-anchor='middle' fill='%23f4efe6'%3EYS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f3ec; --surface:#fffdf8; --ink:#1b1d1f; --muted:#5d6266; --faint:#8a8f93;
+  --line:#e2ddd2; --accent:#0f5c63; --accent-soft:#e1efee; --warm:#b4532a; --warm-soft:#f6e7dc;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121517; --surface:#191d20; --ink:#ebe7df; --muted:#a3a9ad; --faint:#7b8287;
+    --line:#2a3034; --accent:#5fb7bd; --accent-soft:#1a3133; --warm:#e08a5f; --warm-soft:#33241b;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121517; --surface:#191d20; --ink:#ebe7df; --muted:#a3a9ad; --faint:#7b8287;
+  --line:#2a3034; --accent:#5fb7bd; --accent-soft:#1a3133; --warm:#e08a5f; --warm-soft:#33241b;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 32px}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+nav .mark{font:600 17px var(--serif);color:var(--ink);text-decoration:none;white-space:nowrap}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;font-size:14px}
+nav ul a{color:var(--muted);text-decoration:none}
+nav ul a:hover{color:var(--ink)}
+@media (max-width:560px){nav ul li.hide-sm{display:none}}
+
+/* hero */
+header.hero{padding:72px 0 48px}
+.eyebrow{font:500 13px var(--mono);letter-spacing:.04em;color:var(--accent);text-transform:uppercase}
+h1{font:600 clamp(40px,7vw,64px)/1.05 var(--serif);margin:12px 0 20px;letter-spacing:-.01em}
+.lede{font:400 clamp(19px,2.4vw,23px)/1.45 var(--serif);max-width:720px;margin:0 0 20px}
+.sub{color:var(--muted);max-width:680px;margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-weight:500;font-size:15px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+.btn svg{width:16px;height:16px}
+
+/* sections */
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font:600 28px/1.2 var(--serif);margin:0 0 6px}
+.section-note{color:var(--muted);margin:0 0 28px;max-width:640px}
+
+/* flagship */
+.flagship{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;margin-bottom:20px}
+@media (min-width:720px){.flagship{padding:36px}}
+.tag{display:inline-block;font:500 12px var(--mono);padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.tag.warm{background:var(--warm-soft);color:var(--warm)}
+.flagship h3{font:600 26px/1.2 var(--serif);margin:14px 0 10px}
+.flagship p{margin:0 0 14px;max-width:720px}
+.stats{display:grid;grid-template-columns:1fr;gap:12px;margin:24px 0}
+@media (min-width:640px){.stats{grid-template-columns:repeat(3,1fr)}}
+.stat{border-left:3px solid var(--accent);padding:4px 0 4px 14px}
+.stat b{display:block;font:500 28px/1.1 var(--mono);color:var(--ink)}
+.stat span{font-size:14px;color:var(--muted)}
+.open{background:var(--warm-soft);border-radius:12px;padding:16px 18px;margin-top:18px}
+.open strong{color:var(--warm)}
+ul.facts{margin:0 0 6px;padding-left:20px}
+ul.facts li{margin:4px 0}
+.ask{font-size:15px;color:var(--muted);margin-top:16px}
+.ask b{color:var(--ink);font-weight:600}
+
+/* grid of other work */
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column}
+.card .tag{align-self:flex-start}
+.card h3{font:600 19px/1.3 var(--serif);margin:10px 0 8px}
+.card p{margin:0 0 10px;font-size:15px}
+.card .meta{margin-top:auto;font:400 13px var(--mono);color:var(--faint)}
+
+/* experience */
+.job{display:grid;grid-template-columns:1fr;gap:4px 28px;padding:22px 0;border-bottom:1px solid var(--line)}
+.job:last-child{border-bottom:0}
+@media (min-width:720px){.job{grid-template-columns:180px 1fr}}
+.when{font:400 14px var(--mono);color:var(--faint);padding-top:3px}
+.job h3{font:600 18px/1.35 var(--sans);margin:0}
+.job .org{color:var(--muted);margin:0 0 8px}
+.job ul{margin:0;padding-left:20px}
+.job li{margin:5px 0}
+
+/* small builds */
+.list{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.list li{display:grid;grid-template-columns:1fr;gap:2px 20px;padding:14px 0;border-bottom:1px solid var(--line)}
+@media (min-width:720px){.list li{grid-template-columns:200px 1fr}}
+.list li:last-child{border-bottom:0}
+.list a{font-weight:600}
+.list span{color:var(--muted);font-size:15px}
+
+/* collaborate */
+.collab{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:720px){.collab{grid-template-columns:repeat(3,1fr)}}
+.collab div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.collab h3{font:600 16px var(--sans);margin:0 0 6px}
+.collab p{margin:0;font-size:15px;color:var(--muted)}
+.bring{margin-top:28px;max-width:720px}
+
+/* skills / edu */
+.two{display:grid;grid-template-columns:1fr;gap:28px}
+@media (min-width:720px){.two{grid-template-columns:1fr 1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 16px}
+.chips span{font:400 13px var(--mono);padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--surface)}
+h4{font:600 14px var(--sans);margin:0;color:var(--ink)}
+.edu p{margin:0 0 10px}
+
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--faint);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top">Yug Shende</a>
+    <ul>
+      <li><a href="#now">Now</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li class="hide-sm"><a href="#builds">Builds</a></li>
+      <li><a href="#collaborate">Collaborate</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">ML &amp; Platform Engineer · San Francisco</div>
+    <h1>Yug Shende</h1>
+    <!-- Title: matches résumé and LinkedIn. If your LinkedIn title changes, update this line and the first job entry below. -->
+    <p class="lede">I build ranking systems for billions of people, and I'm working on ML for places where the data is sparse, starting with rainfall in India.</p>
+    <p class="sub">Platform engineer at an AI-governance startup, building agentic workflows and internal AI infrastructure. Before that, People You May Know ranking at Meta, the Braintree gateway at PayPal, an LLM/RAG system for employment law at Velocity Global, and five years building forecasting and ranking at Nordstrom.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:yugpshende@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/yugshende">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>
+        LinkedIn</a>
+      <a class="btn" href="https://github.com/yugonline">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.84c.85 0 1.71.11 2.51.34 1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+        GitHub</a>
+    </div>
+  </div>
+</header>
+
+<section id="now">
+  <div class="wrap">
+    <h2>What I'm working on</h2>
+    <p class="section-note">Independent work, November 2026. If any of this overlaps with yours, I'd like to hear from you.</p>
+
+    <article class="flagship">
+      <span class="tag">Climate ML · India</span>
+      <h3>How much rain falls between the gauges?</h3>
+      <p>Crop-insurance payouts in India are triggered by rainfall at village-cluster level, but most villages have no gauge. I'm estimating daily rainfall at locations with no station, and testing it the hard way: whole stations held out, spatial-block cross-validation, and one-shot locked tests on years the model never saw.</p>
+      <p>The test bed is about 3,300 Indian rain gauges active from 1955 to 1970, a dense historical network that lets me hide 95% of stations and score against the truth. ERA5 is the fair gridded baseline for that era, because gauge-based products ingest the test gauges.</p>
+
+      <div class="stats">
+        <div class="stat"><b>+11.4%</b><span>RMSE gain over kriging on a locked 1967 test at 5% gauge density (95% CI 9.4–13.3)</span></div>
+        <div class="stat"><b>1 in 20</b><span>gauges plus ERA5 physics matches kriging that uses <em>every</em> gauge, in two blind years</span></div>
+        <div class="stat"><b>~20%</b><span>less simulated payout error than the nearest-station rule in a grape weather-index insurance study</span></div>
+      </div>
+
+      <ul class="facts">
+        <li>Gauge-only ML ties kriging to within ~1% (trained on 438k US and Australia examples). The gain comes from ERA5 fields (CAPE, column water vapour, moisture divergence, winds) plus terrain priors such as upwind barriers and coast distance.</li>
+        <li>A second blind year (1959) gave +13.1%. In the satellite era, a learned merge beats raw IMERG Late (near real time) by 1–5%.</li>
+        <li>The insurance study covers 180 gauges and 16 seasons under Maharashtra's grape weather-index scheme.</li>
+      </ul>
+
+      <div class="open"><strong>The open problem.</strong> Every method I've tested, mine included, catches at most about a third of days with 64.5&nbsp;mm or more of rain and under-predicts them. Those are the days that trigger insurance payouts and floods. That's what I'm working on now, and a technical note with code is due December 2026.</div>
+
+      <p class="ask"><b>I'd especially like to talk to</b> people working on precipitation estimation, gauge–satellite merging, forecast verification for extremes, and parametric or crop insurance in India.</p>
+    </article>
+
+    <div class="grid">
+      <article class="card">
+        <span class="tag warm">RL · Evaluation</span>
+        <h3>Verifiable-reward environments for agents that move money</h3>
+        <p>Environments where a program, not a judge model, checks the agent's answer. I mapped 54 existing environment ecosystems, 828 tasks from the major gyms and 213 open-source verifiers, and drafted 380 candidate environments in 27 clusters.</p>
+        <p>The first one I'm building is chargeback adjudication against card-network reason codes, drawing on my time running payments infrastructure at PayPal.</p>
+        <div class="meta">Research → first environment in progress</div>
+      </article>
+
+      <article class="card">
+        <span class="tag warm">Agents · Distributed systems</span>
+        <h3>A merge train for parallel coding agents</h3>
+        <p>A runner for many cheap coding agents working in parallel under a planning model, with a ticket board, fenced leases and a merge train. A chaos bench randomly kills workers and the merger mid-flight.</p>
+        <p>The release candidate passed 10 of 10 chaos runs with zero invariant violations across 152 tests, at 1,051–1,878 merges an hour under chaos, versus about 400 for v1.</p>
+        <div class="meta">Built and tested</div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Inference</span>
+        <h3>Inference homelab</h3>
+        <p>I ported <a href="https://github.com/yugonline/DeepSeek-OCR-2">DeepSeek-OCR-2</a> to the current vLLM engine, and I benchmark quantization and throughput for open models on a dual-GPU home server.</p>
+        <div class="meta">Ongoing</div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Audio · LLMs</span>
+        <h3>An AI radio engine</h3>
+        <p>An LLM writes host talk breaks from live news, local TTS speaks them, and vocal separation finds where each song's vocals start. The engine owns the timing, so the host talks up to the vocal and never over it.</p>
+        <div class="meta">Working demo</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="section-note">Nine years of ML and platform engineering, from greenfield builds to systems serving billions.</p>
+
+    <div class="job">
+      <div class="when">2026 – now</div>
+      <div>
+        <h3>Senior Platform Engineer II</h3>
+        <p class="org">AI-governance startup · San Francisco</p>
+        <ul><li>Building AI tooling on the platform team: agentic workflows and internal AI infrastructure used across engineering.</li></ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Jan – May 2026</div>
+      <div>
+        <h3>Senior Machine Learning Engineer</h3>
+        <p class="org">Meta · People You May Know ranking</p>
+        <ul>
+          <li>Owned billion-scale multi-task, multi-label deep ranking models in PyTorch for PYMK, optimising for long-term connection value over short-horizon accept rate through continuous online A/B experiments.</li>
+          <li>Designed a subtractive hide-probability penalty in the main ranking objective, with per-cohort calibration. It was projected to remove 200M+ unwanted recommendations at launch, based on under four days of live traffic.</li>
+          <li>Root-caused a cross-surface notification regression to shared candidate sourcing, which changed the team's sourcing strategy.</li>
+          <li>Showed offline that the production model already learns language affinity, which killed a redundant feature before it shipped.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2025</div>
+      <div>
+        <h3>Senior Software Engineer</h3>
+        <p class="org">PayPal · Braintree</p>
+        <ul><li>Built and operated the Braintree payments gateway on Kafka event streaming: $200B+ annual volume, 500M+ daily transactions, 99.999% uptime. Cut p99 latency 40% (180 ms to 108 ms) through an AWS EKS migration with a zero-downtime cutover.</li></ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2023 – 2025</div>
+      <div>
+        <h3>Machine Learning Engineer</h3>
+        <p class="org">Velocity Global</p>
+        <ul><li>Took an enterprise LLM/RAG assistant for employment law across 190+ countries from idea to production. It cut research time per query from 8 hours to 2 and reached 89% accuracy through a human-in-the-loop evaluation pipeline.</li></ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2018 – 2023</div>
+      <div>
+        <h3>Senior Software Engineer, ML</h3>
+        <p class="org">Nordstrom</p>
+        <ul><li>Built a production ML forecasting and ranking system from scratch, scoring 50K+ SKUs monthly across 350+ stores and serving 200K+ requests a day at 99.95% uptime for three years. Owned the full lifecycle and led the 19-person cross-functional team behind it: $135M in gains and $50M+ in annual revenue impact.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="builds">
+  <div class="wrap">
+    <h2>Open source &amp; smaller builds</h2>
+    <p class="section-note">Things on <a href="https://github.com/yugonline">GitHub</a> you can read and run.</p>
+    <ul class="list">
+      <li><a href="https://github.com/yugonline/context-bridge">context-bridge</a><span>An MCP server that records why AI-generated code was written (decisions, constraints, rejected alternatives), links it to commits, and shares it with teammates or agents. Local SQLite storage, no cloud.</span></li>
+      <li><a href="https://github.com/yugonline/cliNotes">cliNotes</a><span>A Rust CLI for dev logs, learning notes and snippets, with an AI journal that tags entries and summarises them by week, month or year. Presented at a Rust meetup.</span></li>
+      <li><a href="https://github.com/yugonline/DeepSeek-OCR-2">DeepSeek-OCR-2 (fork)</a><span>Port to the current vLLM engine, used in my homelab throughput benchmarks.</span></li>
+      <li><a href="https://github.com/yugonline/KeywordExtractor">KeywordExtractor</a><span>A reimplementation of a paper that combines graph and text embeddings for keyword extraction. My Kaggle Mentorship Program submission.</span></li>
+      <li><a href="https://github.com/yugonline/LeetQuizAgent">LeetQuizAgent</a><span>An agent that quizzes you on data structures and algorithms. I practise competitive programming every day.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="collaborate">
+  <div class="wrap">
+    <h2>Let's work on something</h2>
+    <p class="section-note">I contribute to open-source projects and research outside my day job. These are the conversations I'm looking for.</p>
+    <div class="collab">
+      <div><h3>Rainfall &amp; climate risk</h3><p>Precipitation estimation, gauge–satellite merging, extreme-rain verification, and weather-index insurance, especially in India.</p></div>
+      <div><h3>Ranking &amp; recommendation</h3><p>Multi-objective ranking, negative-feedback signals and cross-surface effects. Open questions where billion-scale production experience helps.</p></div>
+      <div><h3>Agents &amp; evaluation</h3><p>Verifiable RL environments, agent evals, and the infrastructure for running many agents reliably.</p></div>
+    </div>
+    <p class="bring">The best way to reach me is <a href="mailto:yugpshende@gmail.com">email</a>, with a link to what you're working on. I usually reply within a few days.</p>
+  </div>
+</section>
+
+<section id="background">
+  <div class="wrap two">
+    <div>
+      <h2>Skills</h2>
+      <h4>Ranking &amp; recommendation</h4>
+      <div class="chips"><span>MTML deep ranking</span><span>Multi-objective optimisation</span><span>Candidate sourcing</span><span>A/B testing</span></div>
+      <h4>ML, LLMs &amp; agents</h4>
+      <div class="chips"><span>PyTorch</span><span>TensorFlow</span><span>LLM / RAG</span><span>Agentic workflows</span><span>vLLM</span><span>Evaluation</span><span>Geostatistics</span></div>
+      <h4>Systems</h4>
+      <div class="chips"><span>Python</span><span>C++</span><span>Rust</span><span>Java</span><span>SQL</span><span>Kafka</span><span>Spark</span><span>Airflow</span><span>Kubernetes</span><span>AWS</span></div>
+    </div>
+    <div class="edu">
+      <h2>Education</h2>
+      <p><strong>MS, Computer Science</strong><br>George Washington University · 2018</p>
+      <p><strong>BS, Computer Science</strong><br>NMIMS University, Mumbai · 2016</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Yug Shende</span>
+    <span>Made in San Francisco, Seattle, Washington DC and Mumbai</span>
+  </div>
+</footer>
+
+</body>
+</html>
