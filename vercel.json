@@ -5,8 +5,8 @@
   "outputDirectory": "site",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "has": [{ "type": "host", "value": "rlvr.yugshen.de" }], "destination": "/rlvr/index.html" },
+    { "source": "/", "has": [{ "type": "host", "value": "rlvr.yugshen.de" }], "destination": "/rlvr" },
     { "source": "/og.png", "has": [{ "type": "host", "value": "rlvr.yugshen.de" }], "destination": "/rlvr/og.png" },
-    { "source": "/", "destination": "/main/index.html" }
+    { "source": "/", "destination": "/main" }
   ]
 }
