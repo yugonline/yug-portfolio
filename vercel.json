@@ -1,0 +1,12 @@
+{
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "",
+  "outputDirectory": "site",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "has": [{ "type": "host", "value": "rlvr.yugshen.de" }], "destination": "/rlvr" },
+    { "source": "/og.png", "has": [{ "type": "host", "value": "rlvr.yugshen.de" }], "destination": "/rlvr/og.png" },
+    { "source": "/", "destination": "/main" }
+  ]
+}
