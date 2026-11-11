@@ -462,7 +462,7 @@ footer .r{grid-column:1/-1}
 <footer>
   <div class="g">
     <span class="l">© 2026 Yug Shende · San Francisco, Seattle, Washington DC, Mumbai</span>
-    <span class="r" id="perf">Hand-written HTML, no framework</span>
+    <span class="r" id="perf">Plain HTML, no framework</span>
   </div>
 </footer>
 
@@ -531,7 +531,7 @@ footer .r{grid-column:1/-1}
         var total = 0, nav = performance.getEntriesByType('navigation')[0];
         if (nav) total += nav.transferSize || 0;
         performance.getEntriesByType('resource').forEach(function(r){ total += r.transferSize || 0; });
-        var parts = ['Hand-written HTML, no framework'];
+        var parts = ['Plain HTML, no framework'];
         if (total > 0) parts.push(Math.round(total / 1024) + ' KB');
         if (lcp > 0) parts.push('LCP ' + Math.round(lcp) + ' ms');
         perf.textContent = parts.join(' · ');
